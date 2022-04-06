@@ -1,0 +1,137 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.banner{
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+}
+.banner__img img{
+    height: 100%;
+}
+
+.banner__nav{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    background-color: #009ee1;
+    flex: 1;
+}
+
+.banner__nav ul{
+    display: flex;
+    list-style-type: none;
+}
+
+.banner__nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.banner__nav-search input{
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 17.5px;
+    padding: 0 16px;
+    margin-right: 12px;
+}
+
+.banner__nav-func ul{
+    padding: 0;
+    margin: 0;
+}
+
+.banner__nav-func ul li a{
+    display: block;
+    padding: 0 12px;
+    height: 70px;
+    line-height: 70px;
+    color: #fff;
+}
+
+.banner__nav-func ul li a:hover {
+    color: #ffd503;
+    cursor: pointer;
+}
+
+.banner__nav-func ul li a:hover i {
+    color: #ffd503 !important;
+}
+
+.cart__container{
+    width: 1200px;
+    margin: 72px auto 0px ;
+}
+
+.cart__header{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 16px;
+}
+
+.cart__title{
+    display: flex;
+    padding: 12px 0px;
+    margin-bottom: 24px ;
+    color: rgb(91, 91, 91);
+    justify-content: space-around;
+}
+
+.cart__item{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 12px 0px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+}
+.cart__product{
+    display: flex;
+    align-items: center;
+}
+
+.btn__delcart{
+    border: none;
+    background-color: #009ee1;
+    border-radius: 2px;
+    width: 140px;
+    padding: 8px 0px;
+    color: #fff;
+}
+.btn__delcart:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.cart__footer{
+    display: flex;
+    justify-content: end;
+    padding: 12px 60px;
+}
+
+.btn__order{
+    border: none;
+    background-color: orangered;
+    color: #fff;
+    width: 140px;
+    padding: 8px 0px;
+    border-radius: 2px;
+}
+.btn__order:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
