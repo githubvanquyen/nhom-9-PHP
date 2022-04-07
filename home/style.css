@@ -74,7 +74,8 @@ html, body{
 }
 
 .container__category{
-    width: 16.66%;
+    width: calc(16.66% + 16px);
+    margin: 0px 8px;
 }
 
 .container__category-header{
@@ -85,7 +86,8 @@ html, body{
 }
 
 .container__product{
-    width: 83.33%;
+    width: calc(83.33% + 16px);
+    margin: 0px 8px;
 }
 
 .container__category-content{
@@ -119,7 +121,7 @@ html, body{
 }
 .product__item{
     width: calc(25% - 32px);
-    border: 0.125px solid rgb(225, 225, 225);
+    border: 0.125px solid rgb(241, 241, 241);
     padding: 16px;
     background-color: white;
 }
@@ -155,5 +157,14 @@ html, body{
     padding: 12px 0px;
 }
 .item-rate span i{
+    font-size: 12px;
     color:#fb6e2e;
+}
+.rate-total{
+    font-size: 14px;
+    color: rgb(110, 110, 110);
+}
+
+.product__price{
+    font-size: 18px;
 }
