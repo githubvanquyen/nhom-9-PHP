@@ -92,3 +92,10 @@ html, body{
     color:#1976d2;
     text-decoration: none;
 }
+@media screen and (max-width: 739px){
+    .wrap{
+        width: 80%;
+        margin: 0px auto;
+    }
+    
+}

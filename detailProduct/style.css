@@ -252,3 +252,85 @@ td{
 .bg-color{
     background-color: rgb(227, 227, 227);
 }
+
+/* moblie */
+.btn_navmobile{
+    display: none;
+}
+.banner__mobilenav-func{
+    display: none;
+}
+.show{
+    display: block;
+}
+@media screen and (max-width: 739px) {
+    .banner__nav-func{
+        display: none;
+    }
+    .banner{
+        width: 100vw;
+    }
+    .banner__nav-search{
+        display: none;
+    }
+    .btn_navmobile{
+        display: block;
+        margin-right: 20px;
+        font-size: 20px;
+        color: white;
+    }
+    .show{
+        display: block !important;
+    }
+    .banner__mobilenav-func{
+        display: none;
+        margin-top: 70px;
+        background-color: #009ee1;
+        animation: dropdown 0.25s ease-in-out;
+        transform-origin: top;
+        border: 1px solid rgb(240, 240, 240);
+    }
+    @keyframes dropdown {
+        from{
+            transform: scaleY(0);
+        }
+        to{
+            transform: scaleY(1);
+        }
+    }
+
+    .banner__mobilenav-func ul{
+        list-style-type: none;
+        margin: 0;
+        padding-left: 20px;
+    }
+    .banner__mobilenav-func ul li a{
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        line-height: 40px;
+    }
+    .container{
+        margin-top: 70px;
+        width: 100%;
+        animation: dropdown 0.4s ease-in-out;
+        transform-origin: top;
+    }
+    .container__category{
+        display: none;
+    }
+    .container__product{
+        width: 100vw;
+    }
+    .moblie_search{
+        width: calc(100% - 48px);
+        padding: 8px 12px;
+        font-size: 14px;
+        margin: 4px 12px;
+        outline: none;
+        border: none;
+    }
+    .product__item{
+        width:calc(50% - 34px);
+    }
+}

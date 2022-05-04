@@ -15,17 +15,30 @@
         </div>
         <div class="banner__nav">
             <div class="banner__nav-search">
-                <input type="text" placeholder="Bạn tìm gì..">
+                <input type="text" placeholder="Bạn tìm gì...">
+            </div>
+            <div class="btn_navmobile">
+                <i class="fa-solid fa-bars"></i>
             </div>
             <div class="banner__nav-func">
                 <ul>
-                    <li><a href="#"><i class="fa-solid fa-cart-shopping" style="color: #fff;"></i>Giỏ hàng</a></li>
+                    <li><a href="../Cart/index.html"><i class="fa-solid fa-cart-shopping" style="color: #fff;"></i>Giỏ hàng</a></li>
                     <li><a href="../login/index.html">Đăng nhập</a></li>
-                    <li><a href="#">Đăng kí</a></li>
+                    <li><a href="../register/index.html">Đăng kí</a></li>
                     <li><a href="#">Phản hồi</a></li>
                 </ul>
-            </div>
+            </div>  
         </div>
+    </div>
+    <div class="banner__mobilenav-func">
+        <input type="text" placeholder="Bạn tìm gì..." class="moblie_search">
+        <ul>
+            <li><a href="../Cart/index.html">Giỏ hàng</a></li>
+            <li><a href="../login/index.html">Đăng nhập</a></li>
+            <li><a href="../register/index.html">Đăng kí</a></li>
+            <li><a href="#">Phản hồi</a></li>
+            <li><a href="#">Danh mục sản phẩm</a></li>
+        </ul>
     </div>
     <div class="product__title">
         <h3>Điện thoại Iphone 13 Pro Max</h3>
@@ -262,6 +275,20 @@
                 i = 0;
             }
             imagePro.src = '../assets/detailProduct/'+images[i]+'.jpg';
+        })
+
+        //moblie
+        const btnNavmobile = document.querySelector('.btn_navmobile');
+        const bannerMobilenav = document.querySelector('.banner__mobilenav-func');
+        const container = document.querySelector('.container');
+        btnNavmobile.addEventListener('click',()=>{
+            if(bannerMobilenav.classList.contains('show')){
+                bannerMobilenav.classList.remove('show');
+                container.setAttribute('style','margin-top: 70px')
+            }else{
+                bannerMobilenav.classList.add('show');
+                container.setAttribute('style','margin-top: 0px')
+            }
         })
     </script>
 </body>
