@@ -16,26 +16,37 @@
         <div class="login__title">
             Đăng Kí
         </div>
-        <form>
+        <?php require 'handle.php';?>
+        <form action="index.php" method="POST">
             <div style="position: relative;">
-                <input type="text" name="username"  class="input form-input">
-                <div class="placeholder">Tên đăng nhập</div>
+                <input type="text" name="username"  class="input form-input" require>
+                <div class="placeholder">Tên người dùng</div>
             </div>
             <div style="position: relative;">
-                <input type="text" name="email"  class="input form-input">
+                <input type="text" name="email"  class="input form-input" require>
                 <div class="placeholder">Email</div>
             </div>
             <div style="position: relative;">
-                <input type="password" name="password"  class="input form-input">
+                <input type="text" name="phonenumber"  class="input form-input">
+                <div class="placeholder">Số điện thoại</div>
+            </div>
+            <div style="position: relative;">
+                <input type="password" name="password"  class="input form-input" require>
                 <div class="placeholder">Mật khẩu</div>
             </div>
+            <div style="position: relative;">
+                <input type="password" name="repassword"  class="input form-input" require>
+                <div class="placeholder">Nhập lại mật khẩu</div>
+            </div>
+            <button type="submit" name="btn_submit">Đăng Kí</button>
             
-            <button type="submit">Đăng Kí</button>
             <div class="redirect__link">
                 <a href="../login/index.html">Bạn đã có tài khoản? Đăng nhập?</a>
             </div>
         </form>
+
     </div>
+    
     <script>
         const inputs = document.querySelectorAll('.form-input');
         console.log(inputs);

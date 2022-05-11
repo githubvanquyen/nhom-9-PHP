@@ -1,0 +1,28 @@
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fff;
+    font-size: 14px;
+    border-top: 1px solid rgb(226, 226, 226);
+    padding: 16px 20px;
+    color: rgb(92, 92, 92);
+    margin-top: 24px;
+}
+.header__content{
+    color: rgb(40, 40, 40);
+    font-weight: 600;
+    padding: 8px 0px;
+    text-transform: uppercase;
+}
+a{
+    text-decoration: none;
+    color: #009ee1;
+}
+@media screen and (max-width: 739px) {
+    .footer{
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 32px;
+    }
+}

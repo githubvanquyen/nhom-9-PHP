@@ -16,7 +16,8 @@
         <div class="login__title">
             Đăng nhập
         </div>
-        <form>
+        <?php require 'handle.php';?>
+        <form action="index.php" method="POST">
             <div style="position: relative;">
                 <input type="text" name="username"  class="input form-input">
                 <div class="placeholder">Tên đăng nhập</div>
@@ -26,7 +27,7 @@
                 <div class="placeholder">Mật khẩu</div>
             </div>
             
-            <button type="submit">Đăng nhập</button>
+            <button type="submit"  name="btn_submit">Đăng nhập</button>
             <div class="redirect__link">
                 <a href="#">Quên mật khẩu?</a>
                 <a href="../register/index.html">Bạn chưa có tài khoản? Đăng kí?</a>

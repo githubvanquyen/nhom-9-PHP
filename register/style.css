@@ -92,6 +92,25 @@ html, body{
     color:#1976d2;
     text-decoration: none;
 }
+.message{
+    position: fixed;
+    top: 0;
+    left: 200px;
+    width: 50%;
+    height: 100px;
+    background-color: #1976d2;
+    padding: 20px;
+    animation: dropdown 0.3s ease-in-out;
+    transform-origin: top;
+}
+@keyframes dropdown{
+    to{
+        transform: translateY(0);
+    }
+    from{
+        transform: translateY(1);
+    }
+}
 @media screen and (max-width: 739px){
     .wrap{
         width: 80%;

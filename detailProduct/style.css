@@ -35,7 +35,14 @@ html, body{
     text-decoration: none;
     color: black;
 }
-
+.banner__nav-search{
+    position: relative;
+}
+.banner__nav-search> .btn_searchbox{
+    position: absolute;
+    top:0;
+    right: 0;
+}
 .banner__nav-search input{
     height: 35px;
     outline: none;
