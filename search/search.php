@@ -8,18 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="../components/banner_user/style.css">
-    <link rel="stylesheet" href="../components/footer/style1.css">
+    <link rel="stylesheet" href="../components/footer/style.css">
 </head>
 <body>
     <?php 
-        require_once("../middleware/auth1.php"); 
-        include "../components/banner/index.php";
+    include "../components/banner/index.php";
     ?>
     <div class="container">
         <div class="container__category">
             <div class="container__category-header">Danh mục sản phẩm</div>
             <ul class="container__category-content">
-                <li><a href="#">Iphone</a></li>
+                <li><a href="../search/iphone.php">Iphone</a></li>
                 <li><a href="#">SamSung</a></li>
                 <li><a href="#">Sony</a></li>
                 <li><a href="#">Xiaomi</a></li>
@@ -34,8 +33,11 @@
         </div>
         <div class="container__product">
                 <?php
+                    $search = $_GET['search'];
                     require_once("../connect_db.php");
-                    $query = "select * from product";
+                    $query = "select * from productimage INNER JOIN product 
+                    ON productimage.ProductID = product.ProductID 
+                    Where ProductName LIKE '%$search%'";
                     $result = mysqli_query($con, $query);
                     if(mysqli_num_rows($result) > 0){
                         while($data = mysqli_fetch_assoc($result)){
@@ -50,14 +52,10 @@
                                 }
                             }
                             $price = strrev($price);
-                            $sql = "select * from productimage where productimage.ProductID = ".$data['ProductID']."";
-                            $result2 = mysqli_query($con, $sql);
-                            if(mysqli_num_rows($result2) > 0){
-                                $dataimage = mysqli_fetch_assoc($result2);
-                                    echo '<div class="product__item">
+                            echo '<div class="product__item">
                                     <a href="../detailProduct/index.php?q='.$data["ProductID"].'">
                                         <div class="product__img">
-                                            <img src="'.$dataimage["image"].'"/>
+                                            <img src="../assets/product/'.$data["image"].'"/>
                                         </div>
                                         <p>'.$data["ProductName"].'</p>
                                         <strong class="product__price">'.$price.'đ</strong>
@@ -69,11 +67,10 @@
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
                                             </span>
-                                            <span class="rate-total">125</span>
+                                            <span class="rate-total">'.$data["ProductNote"].'</span>
                                         </div>
                                     </a>
                                 </div>';
-                            }
                         }
                     }
                 ?>

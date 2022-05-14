@@ -4,8 +4,9 @@
     </div>
     <div class="banner__nav">
         <div class="banner__nav-search">
-            <input type="text" placeholder="Bạn tìm gì...">
-            
+            <form action="../search/search.php" method="get">
+                <input type="text" name="search" placeholder="Bạn tìm gì...">
+            </form>
         </div>
         <div class="btn_navmobile">
             <i class="fa-solid fa-bars"></i>

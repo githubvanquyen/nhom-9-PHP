@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="../components/banner_user/style.css">
-    <link rel="stylesheet" href="../components/footer/style.css">
+    <link rel="stylesheet" href="../components/footer/style1.css">
 </head>
 <body>
     <?php include_once("../components/banner/index.php");
@@ -19,7 +19,6 @@
         INNER JOIN capacity on productdetail.CapacityID = capacity.CapacityID
         INNER JOIN color on productdetail.ColorID = color.ColorID
         INNER JOIN company on productdetail.CompanyID = company.CompanyID
-        INNER JOIN productimage on productdetail.ProductImageID = productimage.ProductImageID
         where productdetail.ProductID = '".$_GET['q']."'";
         $result = mysqli_query($con, $query);
         if(mysqli_num_rows($result) > 0){
@@ -35,6 +34,19 @@
                 }
             }
             $price = strrev($price);
+        }
+
+        $sql = "select image from productimage
+        where ProductID = '".$_GET['q']."'";
+        $resultimage = mysqli_query($con, $sql);
+        if(mysqli_num_rows($resultimage) > 0){
+            $n = mysqli_num_rows($resultimage);
+            $index = 0;
+            $image = array(20);
+            while ($row = mysqli_fetch_row($resultimage)){
+                $image[$index] = $row[0];
+                $index++;
+            } 
         }
     }
     ?>
@@ -57,13 +69,13 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
         </span>
-        <span class="rate-total"><?= $data["ProductNote"];?> lượt đánh giá</span>
+        <span class="rate-total"> 125 lượt đánh giá</span>
     </div>
     <div class="container">
         <div class="product__image">
             <div class="image__list">
                 <div class="common prev"><i class="fa-solid fa-angle-left"></i></div>
-                <img src="../assets/detailProduct/iphone-13-pro-max-1.jpg" alt="" width="90%" class="imgproduct">
+                <img src="<?= $image[2];?>" alt="" width="90%" class="imgproduct">
                 <div class="common next"><i class="fa-solid fa-angle-right"></i></div>
             </div>
             <div class="product__desc">
@@ -77,28 +89,38 @@
                 </div>
                 <div class="description__info">
                     <i class="fa-solid fa-box-archive"></i>
-                    <div>Bộ sản phầm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Lightning - Type C</div>
+                    <div>Bộ sản phầm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp sạc</div>
                 </div>
             </div>
             <div>
-                <img src="../assets/detailProduct/iphone-13-pro-max-n.jpg" alt="" width="90%">
+                <img src=<?= $image[1];?> alt="" width="90%">
             </div>
-            <div>
-                
-            </div>
+            <div style="font-size: 18px; line-height: 22px;"><?= $data["ProductNote"];?></div>
         </div>
         <div class="product__info">
             <div>
-                <button>128GB</button>
-                <button>256GB</button>
-                <button>512GB</button>
-                <button>1TB</button>
+                <?php
+                    $sql = "select CapacityName from productdetail 
+                    INNER JOIN capacity on productdetail.CapacityID= capacity.CapacityID";
+                    $result = mysqli_query($con, $sql);
+                    if(mysqli_fetch_row($result) > 0){
+                        while( $row = mysqli_fetch_assoc($result)){
+                            echo "<button>".$row["CapacityName"]."</button>";
+                        }
+                    }
+                ?>
             </div>
             <div>
-                <button>Bạc</button>
-                <button>Xanh dương</button>
-                <button>Xám</button>
-                <button>Vàng đồng</button>
+                <?php
+                    $sql = "select ColorName from productdetail 
+                    INNER JOIN color on productdetail.ColorID= Color.ColorID";
+                    $result = mysqli_query($con, $sql);
+                    if(mysqli_fetch_row($result) > 0){
+                        while( $row = mysqli_fetch_assoc($result)){
+                            echo "<button>".$row["ColorName"]."</button>";
+                        }
+                    }
+                ?>
             </div>
             <div class="product__price">
                 <span><?= $price;?>đ</span>
@@ -107,7 +129,7 @@
             <div class="product__promo">
                 <div class="promo__header">
                     <h4>Khuyến mãi</h4>
-                    <p>Giá và khuyến mãi dự kiến áp dụng đến 30/4</p>
+                    <p>Giá và khuyến mãi dự kiến áp dụng đến 30/5</p>
                 </div>
                 <div style="padding: 8px 12px;">
                     <p>Giảm giá 50% gói bảo hành mở rộng thêm 1 năm</p>
@@ -189,20 +211,13 @@
     </div>
     <?php include "../components/footer/index.php";?>
     <script>
+        
         const images = [
-            "iphone-13-pro-max-1",
-            "iphone-13-pro-max-1-1",
-            "iphone-13-pro-max-1-2",
-            "iphone-13-pro-max-2",
-            "iphone-13-pro-max-3",
-            "iphone-13-pro-max-4",
-            "iphone-13-pro-max-5",
-            "iphone-13-pro-max-6",
-            "iphone-13-pro-max-7",
-            "iphone-13-pro-max-8",
-            "iphone-13-pro-max-9",
-            "iphone-13-pro-max-10",
-            "iphone-13-pro-max-11",
+            <?php
+            for($i = 2; $i< $n; $i++){
+                echo "\"".$image[$i]."\",";
+            }
+        ?>
         ];
         let i = 0;
         const prev = document.querySelector('.prev');
@@ -215,14 +230,14 @@
             if(i < 0){
                 i = images.length -1;
             }
-            imagePro.src = '../assets/detailProduct/'+images[i]+'.jpg';
+            imagePro.src = images[i];
         })
         next.addEventListener('click',()=>{
             i++;
             if(i > images.length - 1){
                 i = 0;
             }
-            imagePro.src = '../assets/detailProduct/'+images[i]+'.jpg';
+            imagePro.src = images[i];
         })
     </script>
 </body>
